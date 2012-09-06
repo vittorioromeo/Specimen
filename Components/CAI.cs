@@ -62,8 +62,8 @@ namespace TestGenericShooter.Components
             BulletSpeedMax = 400 + _cStats.Agility.Total*10;
             BulletSpeedIncrease = 25 + _cStats.Agility.Total*3;
             WanderingDirectionDelayMax = 50 - _cStats.Speed.Total/8f;
-            WanderingSpeed = 0;// _cStats.Speed.Total;
-            ChaseSpeed = 0;// _cStats.Speed.Total / 10f;
+            WanderingSpeed =  _cStats.Speed.Total;
+            ChaseSpeed =  _cStats.Speed.Total / 10f;
             ShootDelayMax = 40 - _cStats.Agility.Total/8f;
 
             _bulletSpeed = BulletSpeedBase;
