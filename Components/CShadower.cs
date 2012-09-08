@@ -2,30 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using SFML.Graphics;
-using TestGenericShooter.Resources;
-using VeeEntitySystem2012;
+using Specimen.Resources;
+using TestGenericShooter;
+using VeeEntity;
 using VeeShadow;
 
 #endregion
 
-namespace TestGenericShooter.Components
+namespace Specimen.Components
 {
     public class CShadower : Component
     {
         private readonly CBody _cBody;
         private readonly Color _color;
         private readonly SPGame _game;
+        private readonly bool _isDrawn;
         private readonly List<Vertex[]> _vertexArrays;
 
-        public CShadower(SPGame mGame, CBody mCBody, bool mDraw, Color mColor, int mMultiplier = 35)
+        public CShadower(SPGame mGame, CBody mCBody, bool mIsDrawn, Color mColor, int mMultiplier = 35)
         {
             _game = mGame;
             _cBody = mCBody;
+            _isDrawn = mIsDrawn;
             _color = mColor;
             _vertexArrays = new List<Vertex[]>();
             ShadowCaster = new ShadowCaster(_cBody.Position, mMultiplier);
 
-            if (mDraw) _game.AddDrawAction(Draw, -10);
+            if (_isDrawn) _game.AddDrawAction(Draw, -10);
         }
 
         public ShadowCaster ShadowCaster { get; private set; }
@@ -37,11 +40,10 @@ namespace TestGenericShooter.Components
             ShadowCaster.Position = _cBody.Position;
             ShadowCaster.CalculateShadows(hulls);
 
+            if (!_isDrawn) return;
+
             foreach (var polygon in ShadowCaster.Polygons)
-            {
-                var vertexArray = polygon.GetVertexArray(1f/SPUtils.Divisor, _color);
-                _vertexArrays.Add(vertexArray);
-            }
+                _vertexArrays.Add(polygon.GetVertexArray(1f/SPUtils.Divisor, _color));
         }
 
         private void Draw() { foreach (var array in _vertexArrays) _game.GameWindow.RenderWindow.Draw(array, PrimitiveType.Quads); }

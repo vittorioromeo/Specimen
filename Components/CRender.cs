@@ -3,11 +3,12 @@ using SFML.Graphics;
 using SFML.Window;
 using SFMLStart.Data;
 using SFMLStart.Utilities;
-using VeeEntitySystem2012;
+using TestGenericShooter;
+using VeeEntity;
 
 #endregion
 
-namespace TestGenericShooter.Components
+namespace Specimen.Components
 {
     public class CRender : Component
     {
@@ -41,8 +42,7 @@ namespace TestGenericShooter.Components
             var y = _cBody.Y.ToPixels();
 
             Sprite = new Sprite(Assets.GetTexture(_textureName));
-            if (_tilesetName != null && _labelName != null)
-                Sprite.TextureRect = Assets.Tilesets[_tilesetName].GetTextureRect(_labelName);
+            if (_tilesetName != null && _labelName != null) Sprite.TextureRect = Assets.GetTileset(_tilesetName).GetTextureRect(_labelName);
             Sprite.Rotation = _rotation;
             Sprite.Position = new Vector2f(x, y);
             Sprite.Origin = new Vector2f(Sprite.GetGlobalBounds().Width/2, Sprite.GetGlobalBounds().Height/2);
@@ -60,7 +60,7 @@ namespace TestGenericShooter.Components
 
             if (Animation == null) return;
             Animation.Update(mFrameTime);
-            Sprite.TextureRect = Assets.Tilesets[_tilesetName].GetTextureRect(Animation.GetCurrentLabel());
+            Sprite.TextureRect = Assets.GetTileset(_tilesetName).GetTextureRect(Animation.GetCurrentLabel());
         }
 
         public override void Removed() { _game.RemoveDrawAction(Draw); }

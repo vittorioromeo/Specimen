@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Specimen", "Specimen.csproj", "{CB5B26BF-3400-46FC-A73D-40F47B9F9F84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeeCollision", "..\..\GitHub\VeeCollision\VeeCollision.csproj", "{CD21151C-E8C0-4C0E-A92B-AC998E9F7C1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeeCollision", "..\VeeCollision\VeeCollision.csproj", "{CD21151C-E8C0-4C0E-A92B-AC998E9F7C1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMLStart", "..\..\GitHub\SFMLStart\SFMLStart.csproj", "{C8DF8299-2B2E-415B-849E-4CBBC1CB4AA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMLStart", "..\SFMLStart\SFMLStart.csproj", "{C8DF8299-2B2E-415B-849E-4CBBC1CB4AA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeeEntitySystem2012", "..\..\GitHub\VeeEntitySystem2012\VeeEntitySystem2012.csproj", "{07789116-C18E-4A15-B8F2-BC9A83089B0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeeEntity", "..\VeeEntitySystem2012\VeeEntity.csproj", "{07789116-C18E-4A15-B8F2-BC9A83089B0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeeShadow", "..\..\GitHub\VeeShadow\VeeShadow.csproj", "{3B8FD8B8-8303-4194-A124-B4B671C65DFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeeShadow", "..\VeeShadow\VeeShadow.csproj", "{3B8FD8B8-8303-4194-A124-B4B671C65DFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

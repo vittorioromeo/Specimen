@@ -4,7 +4,7 @@ using SFMLStart.Utilities;
 
 #endregion
 
-namespace TestGenericShooter
+namespace Specimen
 {
     public class Stat
     {

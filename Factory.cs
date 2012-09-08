@@ -2,14 +2,15 @@
 using SFML.Graphics;
 using SFMLStart.Utilities;
 using SFMLStart.Vectors;
-using TestGenericShooter.Components;
-using TestGenericShooter.Resources;
+using Specimen.Components;
+using Specimen.Resources;
+using TestGenericShooter;
 using VeeCollision;
-using VeeEntitySystem2012;
+using VeeEntity;
 
 #endregion
 
-namespace TestGenericShooter
+namespace Specimen
 {
     public class Factory
     {
@@ -121,7 +122,7 @@ namespace TestGenericShooter
             var cBody = Body(new SSVector2I(mX, mY), 10.ToUnits(), 10.ToUnits());
             var cMovement = Movement(cBody);
             var cRender = Render(cBody, Textures.CharEnemy, Tilesets.Char, "normal");
-            var cShadower = new CShadower(_game, cBody, true, new Color(125, 255, 125, 125));
+            var cShadower = new CShadower(_game, cBody, false, new Color(125, 255, 125, 125));
             var cLineOfSight = new CLineOfSight(_game, cBody, cShadower) {TargetTag = Tags.Friendly, Angle = 90, Amplitude = 65};
             var cAI = AI(cStats, cBody, cMovement, cRender, cLineOfSight);
 
@@ -147,7 +148,7 @@ namespace TestGenericShooter
             cBody.Body.AddGroupsToIgnoreResolve(Groups.Obstacle, Groups.Character);
             cBody.OnCollision += (mCollisionInfo) =>
                                  {
-                                     var entity = (Entity)mCollisionInfo.UserData;
+                                     var entity = (Entity) mCollisionInfo.UserData;
                                      var cHealth = entity.GetComponent<CHealth>();
 
                                      if (entity.HasTag(Tags.DamagedByAny))

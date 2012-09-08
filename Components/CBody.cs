@@ -2,17 +2,17 @@
 using System;
 using SFMLStart.Vectors;
 using VeeCollision;
-using VeeEntitySystem2012;
+using VeeEntity;
 
 #endregion
 
-namespace TestGenericShooter.Components
+namespace Specimen.Components
 {
     public class CBody : Component
     {
         public CBody(Body mBody) { Body = mBody; }
 
-        public Body Body { get; set; }
+        public Body Body { get; private set; }
 
         #region Shortcut Properties
         public World World { get { return Body.World; } }

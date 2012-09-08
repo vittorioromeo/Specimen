@@ -6,11 +6,12 @@ using SFML.Graphics;
 using SFML.Window;
 using SFMLStart.Utilities;
 using SFMLStart.Vectors;
-using VeeEntitySystem2012;
+using TestGenericShooter;
+using VeeEntity;
 
 #endregion
 
-namespace TestGenericShooter.Components
+namespace Specimen.Components
 {
     public class CLineOfSight : Component
     {

@@ -1,4 +1,4 @@
-namespace TestGenericShooter.Resources
+namespace Specimen.Resources
 {
     public static class Tilesets
     {

@@ -4,14 +4,14 @@ using SFML.Graphics;
 using SFML.Window;
 using SFMLStart;
 using SFMLStart.Data;
-using SFMLStart.Utilities;
-using TestGenericShooter.Resources;
+using Specimen.Resources;
+using TestGenericShooter;
 using VeeCollision;
-using VeeEntitySystem2012;
+using VeeEntity;
 
 #endregion
 
-namespace TestGenericShooter
+namespace Specimen
 {
     public class SPGame : Game
     {
@@ -68,40 +68,21 @@ namespace TestGenericShooter
             var map = new[]
                       {
                           "11111111111111111111",
-                          "10010000000000000001",
+                          "10010000444400000001",
                           "10100000000000000101",
                           "10000000000000000001",
                           "10000000000000000001",
                           "10000111111000000001",
-                          "10000000000000000001",
-                          "10001000000100000001",
+                          "14000001000000000001",
+                          "14001001000100000001",
                           "10001002000100000001",
-                          "10001000000100000001",
-                          "10001000000100000001",
+                          "14001000000100000001",
+                          "10001011110100000001",
                           "10000000000000000001",
                           "10100000400000000101",
-                          "10000000000000001001",
+                          "10044400440000000001",
                           "11111111111111111111"
                       };
-
-            var mapxd = new[]
-                        {
-                            "11111111111111111111",
-                            "14400000000000000001",
-                            "14401000100001000001",
-                            "14401000000000000001",
-                            "14401000000011100001",
-                            "10001002000011100001",
-                            "10001000000011100001",
-                            "10000000000011100001",
-                            "10000000000011100001",
-                            "10010010000011100001",
-                            "10000000000000000131",
-                            "10001111110000000131",
-                            "10001111110000100131",
-                            "10000000000000000031",
-                            "11111111111111111111"
-                        };
 
             for (var iY = 0; iY < sizeY; iY++)
                 for (var iX = 0; iX < sizeX; iX++)
@@ -117,34 +98,6 @@ namespace TestGenericShooter
 
                     if (map.IsValue(iX, iY, 7))
                         Factory.BreakableWall(8.ToUnits() + 16.ToUnits()*iX, 8.ToUnits() + 16.ToUnits()*iY);
-
-                    if (map.IsValue(iX, iY, 9))
-                    {
-                        Factory.Bullet(8.ToUnits() + 16.ToUnits()*iX, 8.ToUnits() + 16.ToUnits()*iY,
-                                       Utils.Random.Next(0, 360), Utils.Random.Next(0, 25), false);
-                        Factory.Bullet(8.ToUnits() + 16.ToUnits()*iX, 8.ToUnits() + 16.ToUnits()*iY,
-                                       Utils.Random.Next(0, 360), Utils.Random.Next(0, 25), false);
-                        Factory.Bullet(8.ToUnits() + 16.ToUnits()*iX, 8.ToUnits() + 16.ToUnits()*iY,
-                                       Utils.Random.Next(0, 360), Utils.Random.Next(0, 25), false);
-                        Factory.Bullet(8.ToUnits() + 16.ToUnits()*iX, 8.ToUnits() + 16.ToUnits()*iY,
-                                       Utils.Random.Next(0, 360), Utils.Random.Next(0, 25), false);
-                        Factory.Bullet(8.ToUnits() + 16.ToUnits()*iX, 8.ToUnits() + 16.ToUnits()*iY,
-                                       Utils.Random.Next(0, 360), Utils.Random.Next(0, 25), false);
-                        Factory.Bullet(8.ToUnits() + 16.ToUnits()*iX, 8.ToUnits() + 16.ToUnits()*iY,
-                                       Utils.Random.Next(0, 360), Utils.Random.Next(0, 25), false);
-                        Factory.Bullet(8.ToUnits() + 16.ToUnits()*iX, 8.ToUnits() + 16.ToUnits()*iY,
-                                       Utils.Random.Next(0, 360), Utils.Random.Next(0, 25), false);
-                        Factory.Bullet(8.ToUnits() + 16.ToUnits()*iX, 8.ToUnits() + 16.ToUnits()*iY,
-                                       Utils.Random.Next(0, 360), Utils.Random.Next(0, 25), false);
-                        Factory.Bullet(8.ToUnits() + 16.ToUnits()*iX, 8.ToUnits() + 16.ToUnits()*iY,
-                                       Utils.Random.Next(0, 360), Utils.Random.Next(0, 25), false);
-                        Factory.Bullet(8.ToUnits() + 16.ToUnits()*iX, 8.ToUnits() + 16.ToUnits()*iY,
-                                       Utils.Random.Next(0, 360), Utils.Random.Next(0, 25), false);
-                        Factory.Bullet(8.ToUnits() + 16.ToUnits()*iX, 8.ToUnits() + 16.ToUnits()*iY,
-                                       Utils.Random.Next(0, 360), Utils.Random.Next(0, 25), false);
-                        Factory.Bullet(8.ToUnits() + 16.ToUnits()*iX, 8.ToUnits() + 16.ToUnits()*iY,
-                                       Utils.Random.Next(0, 360), Utils.Random.Next(0, 25), false);
-                    }
 
                     if (iX <= 0 || iY <= 0 || iX >= sizeX - 1 || iY >= sizeY - 1) continue;
                     if (!map.IsValue(iX, iY, 0)) continue;

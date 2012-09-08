@@ -4,12 +4,12 @@ using System.Linq;
 using SFMLStart.Utilities;
 using SFMLStart.Utilities.Timelines;
 using SFMLStart.Vectors;
-using TestGenericShooter.Resources;
-using VeeEntitySystem2012;
+using Specimen.Resources;
+using VeeEntity;
 
 #endregion
 
-namespace TestGenericShooter.Components
+namespace Specimen.Components
 {
     public class CAI : Component
     {
@@ -25,6 +25,7 @@ namespace TestGenericShooter.Components
         private readonly CRender _cRender;
         private readonly CStats _cStats;
         private readonly SPGame _game;
+
         public int BulletSpeedBase;
         public int BulletSpeedIncrease;
         public int BulletSpeedMax;
@@ -35,6 +36,7 @@ namespace TestGenericShooter.Components
         public float WanderingDirectionDelayMax;
         public float WanderingSpeed;
         private int _bulletSpeed;
+
         private float _currentDirection = Utils.Random.Next(0, 360);
         private float _shootDelay;
         private int _state;
@@ -62,15 +64,15 @@ namespace TestGenericShooter.Components
             BulletSpeedMax = 400 + _cStats.Agility.Total*10;
             BulletSpeedIncrease = 25 + _cStats.Agility.Total*3;
             WanderingDirectionDelayMax = 50 - _cStats.Speed.Total/8f;
-            WanderingSpeed =  _cStats.Speed.Total;
-            ChaseSpeed =  _cStats.Speed.Total / 10f;
+            WanderingSpeed = _cStats.Speed.Total;
+            ChaseSpeed = _cStats.Speed.Total/10f;
             ShootDelayMax = 40 - _cStats.Agility.Total/8f;
 
             _bulletSpeed = BulletSpeedBase;
 
             mCBody.OnCollision += (mCollisionInfo) =>
                                   {
-                                      var entity = (Entity)mCollisionInfo.UserData;
+                                      var entity = (Entity) mCollisionInfo.UserData;
                                       if (entity.HasTag(Tags.Wall))
                                       {
                                           if (_state == StateWandering && _turnAroundDelay <= 0)
@@ -83,7 +85,7 @@ namespace TestGenericShooter.Components
                                       if (entity.HasTag(Tags.BulletFriendly))
                                       {
                                           _state = StateWait;
-                                          var vector = mCollisionInfo.Body.Position - mCollisionInfo.Body.Velocity * 5;
+                                          var vector = mCollisionInfo.Body.Position - mCollisionInfo.Body.Velocity*5;
                                           _currentDirection =
                                               Utils.Math.Angles.TowardsDegrees(new SSVector2F(_cBody.X, _cBody.Y),
                                                                                new SSVector2F(vector));

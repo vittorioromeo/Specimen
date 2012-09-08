@@ -1,9 +1,9 @@
 #region
-using VeeEntitySystem2012;
+using VeeEntity;
 
 #endregion
 
-namespace TestGenericShooter.Components
+namespace Specimen.Components
 {
     public class CChild : Component
     {
